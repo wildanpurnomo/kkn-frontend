@@ -10,7 +10,7 @@
           <br />
           <div
             class="text-h5 text-md-h5 black--text font-weight-light black--text"
-          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos dolore deleniti soluta perferendis expedita blanditiis et commodi porro nobis, odio doloribus! Velit veritatis eaque quo! Porro vero at neque eaque.</div>
+          >Ini pokoknya aku perlu bahan buat tulisan "kesiapan wisata sendang di era new normal". Gambarnya ya kompilasi gambar relevan kayak wastafel, petugas yang pake face shield, dsb.</div>
         </v-flex>
         <v-flex sm12 xs12 hidden-md-and-up>
           <v-parallax height="500" src="https://cdn.vuetifyjs.com/images/parallax/material.jpg">
@@ -22,7 +22,7 @@
                 <br />
                 <div
                   class="text-h5 text-md-h5 black--text font-weight-light black--text"
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos dolore deleniti soluta perferendis expedita blanditiis et commodi porro nobis, odio doloribus! Velit veritatis eaque quo! Porro vero at neque eaque.</div>
+                >Ini pokoknya aku perlu bahan buat tulisan "kesiapan wisata sendang di era new normal". Gambarnya ya kompilasi gambar relevan kayak wastafel, petugas yang pake face shield, dsb.</div>
               </v-col>
             </v-row>
           </v-parallax>
