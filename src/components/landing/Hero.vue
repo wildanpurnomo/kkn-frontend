@@ -1,10 +1,10 @@
 <template>
   <v-container fluid fill-height class="landingHero" style="max-height: 100vh">
     <v-layout justify-center align-center column>
-      <div class="display-4 font-weight-black white--text text-xs-center">SELAMAT DATANG</div>
-      <div class="display-4 font-weight-black white--text text-xs-center">DI WISATA SENDANG</div>
+      <div class="font-weight-black white--text text-h3 text-md-h1 text-center">SELAMAT DATANG</div>
+      <div class="font-weight-black white--text text-h3 text-md-h1 text-center">DI WISATA SENDANG</div>
       <div
-        class="display-1 font-weight-bold white--text text-xs-center"
+        class="display-1 font-weight-bold white--text text-center"
       >Wisata Asik, Nyaman dan Aman</div>
     </v-layout>
   </v-container>

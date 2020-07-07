@@ -1,7 +1,6 @@
 <template>
-  <v-container fill-height style="max-height: 100vh" >
-    <div class="display-3 mb-5 text-center" style="width: 100%">Wisata Desa Sendang</div>
-    <v-layout row wrap>
+  <v-container >
+    <v-layout row wrap style="height: 100%">
       <v-flex md4 xs6 v-for="venue in venues" :key="venue.name">
         <v-hover>
           <template v-slot:default="{ hover }">

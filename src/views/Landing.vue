@@ -2,10 +2,14 @@
   <span>
     <Hero />
     <Featuring />
+    <v-divider></v-divider>
     <NewNormal />
+    <v-divider></v-divider>
     <Paralayang />
     <Gantolle />
+    <v-divider></v-divider>
     <DigitalMap />
+    <v-divider></v-divider>
     <Footer />
   </span>
 </template>
@@ -29,7 +33,7 @@ export default {
     Paralayang,
     Gantolle,
     DigitalMap,
-    Footer,
+    Footer
   }
 };
 </script>

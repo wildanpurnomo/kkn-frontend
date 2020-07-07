@@ -20,7 +20,7 @@
 export default {
   name: "Footer",
   data: () => ({
-    icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"]
+    icons: ["mdi-facebook", "mdi-twitter", "mdi-instagram", "mdi-youtube"]
   })
 };
 </script>
