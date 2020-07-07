@@ -9,7 +9,7 @@
           <div class="text-h3 text-md-h3 font-weight-light black--text">Gantolle</div>
           <br />
           <div
-            class="text-h5 text-md-h5 font-weight-light black--text"
+            class="text-h5 text-md-h5 font-weight-light black--text text-justify"
           >Ini pokoknya perlu saran deskripsi singkat menarik tentang Gantolle desa sendang. Sama gambar wisata paralayang yang kalo bisa terbaru. Sebenere minta pak agung bisa bisa aja.</div>
         </v-flex>
         <v-flex sm12 xs12 hidden-md-and-up>

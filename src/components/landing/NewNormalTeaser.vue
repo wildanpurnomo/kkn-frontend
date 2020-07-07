@@ -9,7 +9,7 @@
           <div class="text-h3 text-md-h3 black--text font-weight-light">Wisata Asik, Tetap Aman</div>
           <br />
           <div
-            class="text-h5 text-md-h5 black--text font-weight-light black--text"
+            class="text-h5 text-md-h5 black--text font-weight-light black--text text-justify"
           >Ini pokoknya aku perlu bahan buat tulisan "kesiapan wisata sendang di era new normal". Gambarnya ya kompilasi gambar relevan kayak wastafel, petugas yang pake face shield, dsb.</div>
         </v-flex>
         <v-flex sm12 xs12 hidden-md-and-up>

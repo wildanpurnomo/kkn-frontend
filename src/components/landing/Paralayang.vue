@@ -6,7 +6,7 @@
           <div class="text-h3 text-md-h3 font-weight-light black--text">Paralayang</div>
           <br />
           <div
-            class="text-h5 text-md-h5 font-weight-light black--text"
+            class="text-h5 text-md-h5 font-weight-light black--text text-justify"
           >Ini pokoknya perlu saran deskripsi singkat menarik tentang paralayang desa sendang. Sama gambar wisata paralayang yang kalo bisa terbaru. Sebenere minta pak agung bisa bisa aja.</div>
         </v-flex>
         <v-flex md6 pa-5 class="hidden-sm-and-down">
