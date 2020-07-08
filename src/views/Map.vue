@@ -1,5 +1,5 @@
 <template >
-  <div fill-height style="max-height: 100vh">
+  <div>
     <nav>
       <v-navigation-drawer app class="white" width="450">
         <v-list style="padding: 0">
@@ -12,7 +12,7 @@
           </v-list-item>
 
           <v-list-item>
-            <div class="text-h6 font-weight-regular">{{data[indexChosen].name}}</div>
+            <div class="text-h5 font-weight-black">{{data[indexChosen].name}}</div>
           </v-list-item>
 
           <v-divider></v-divider>
@@ -32,32 +32,45 @@
       </v-navigation-drawer>
     </nav>
 
-    <v-container fluid pa-0>
-      <gmap-map :center="center" :zoom="12" style="width: 100%; height: 800px">
-        <gmap-marker
-        :key="index"
-        v-for="(loc, index) in data"
-        :position="getLocationCoordinates(loc.location.coordinates)"
-        :icon="index === indexChosen ? 'http://maps.google.com/mapfiles/ms/icons/green-dot.png' : 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'"
-        @click="changeIndexChosen(index)">
-        </gmap-marker>
-      </gmap-map>
+    <v-container fluid pa-0 style="height: 100vh">
+      <v-layout style="height: 100%">
+        <gmap-map :center="center" :zoom="12" style="width: 100%; height: 100%">
+          <gmap-marker
+            :key="index"
+            v-for="(loc, index) in data"
+            :position="getLocationCoordinates(loc.location.coordinates)"
+            :icon="index === indexChosen ? 'http://maps.google.com/mapfiles/ms/icons/green-dot.png' : 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'"
+            @click="changeIndexChosen(index)"
+          ></gmap-marker>
+        </gmap-map>
+      </v-layout>
     </v-container>
+
+    <v-dialog v-model="dialog" width="500">
+      <v-card>
+        <v-img :src="data[indexChosen].imageUrl" class="align-end">
+          <v-card-title>{{data[indexChosen].name}}</v-card-title>
+        </v-img>
+
+        <v-card-text class="text-justify black--text" style="padding: 10px">
+          <div>{{data[indexChosen].description}}</div>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
 <script>
 export default {
   name: "Map",
-  mounted() {
-
-  },
+  mounted() {},
   data() {
     return {
       center: {
         lat: -7.7999592,
         lng: 110.8801834
       },
+      dialog: false,
       indexChosen: 0,
       data: [
         {
@@ -75,7 +88,7 @@ export default {
             "Puncak Joglo merupakan wisata yang luar biasa indah megah asri luar biasa indah megah asri yang terletak di Desa Sendang, Kecamatan Wonogiri.",
           imageUrl: "https://cdn.vuetifyjs.com/images/parallax/material.jpg",
           location: {
-            coordinates: [-7.900000, 110.8801834]
+            coordinates: [-7.9, 110.8801834]
           }
         },
         {
@@ -84,22 +97,32 @@ export default {
             "Waduk Gajah Mungkur merupakan wisata yang luar biasa indah megah asri luar biasa indah megah asri yang terletak di Desa Sendang, Kecamatan Wonogiri.",
           imageUrl: "https://cdn.vuetifyjs.com/images/parallax/material.jpg",
           location: {
-            coordinates: [-7.900000, 110.8950000]
+            coordinates: [-7.9, 110.895]
           }
-        },
+        }
       ]
     };
   },
   methods: {
-    getLocationCoordinates (coords) {
+    getLocationCoordinates(coords) {
       return {
         lat: coords[0],
-        lng: coords[1],
-      }
+        lng: coords[1]
+      };
     },
     changeIndexChosen(index) {
       this.indexChosen = index;
+
+      if (
+        this.$vuetify.breakpoint.name === "xs" ||
+        this.$vuetify.breakpoint.name === "sm"
+      ) {
+        this.dialog = true;
+      }
     }
   }
 };
 </script>
+
+<style scoped>
+</style>
