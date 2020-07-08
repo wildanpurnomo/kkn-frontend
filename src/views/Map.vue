@@ -12,7 +12,7 @@
           </v-list-item>
 
           <v-list-item>
-            <div class="text-h6 font-weight-regular">Watu Cenik</div>
+            <div class="text-h6 font-weight-regular">{{data[indexChosen].name}}</div>
           </v-list-item>
 
           <v-divider></v-divider>
@@ -20,7 +20,7 @@
           <v-list-item>
             <article
               class="text-justify text-h6 font-weight-regular"
-            >Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, accusamus. Modi autem perspiciatis obcaecati eligendi dolore culpa ea unde veniam animi sequi eum magni, qui natus labore incidunt a ratione!</article>
+            >{{data[indexChosen].description}}</article>
           </v-list-item>
 
           <br />
@@ -37,7 +37,9 @@
         <gmap-marker
         :key="index"
         v-for="(loc, index) in data"
-        :position="getLocationCoordinates(loc.location.coordinates)">
+        :position="getLocationCoordinates(loc.location.coordinates)"
+        :icon="index === indexChosen ? 'http://maps.google.com/mapfiles/ms/icons/green-dot.png' : 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'"
+        @click="changeIndexChosen(index)">
         </gmap-marker>
       </gmap-map>
     </v-container>
@@ -47,12 +49,16 @@
 <script>
 export default {
   name: "Map",
+  mounted() {
+
+  },
   data() {
     return {
       center: {
         lat: -7.7999592,
         lng: 110.8801834
       },
+      indexChosen: 0,
       data: [
         {
           name: "Watu Cenik",
@@ -90,6 +96,9 @@ export default {
         lat: coords[0],
         lng: coords[1],
       }
+    },
+    changeIndexChosen(index) {
+      this.indexChosen = index;
     }
   }
 };
