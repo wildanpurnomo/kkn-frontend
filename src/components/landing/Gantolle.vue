@@ -10,7 +10,7 @@
           <br />
           <div
             class="text-h5 text-md-h5 font-weight-light black--text text-justify"
-          >Ini pokoknya perlu saran deskripsi singkat menarik tentang Gantolle desa sendang. Sama gambar wisata paralayang yang kalo bisa terbaru. Sebenere minta pak agung bisa bisa aja.</div>
+          >Perlu saran deskripsi singkat menarik tentang Gantolle Desa Sendang. Lalu gambar wisata paralayang yang terbaru. Bisa minta Pak Agung bisa bisa aja.</div>
         </v-flex>
         <v-flex sm12 xs12 hidden-md-and-up>
           <v-parallax height="500" src="https://cdn.vuetifyjs.com/images/parallax/material.jpg">
@@ -20,7 +20,7 @@
                 <br />
                 <div
                   class="text-h5 text-md-h5 font-weight-light black--text"
-                >Ini pokoknya perlu saran deskripsi singkat menarik tentang Gantolle desa sendang. Sama gambar wisata paralayang yang kalo bisa terbaru. Sebenere minta pak agung bisa bisa aja.</div>
+                >Perlu saran deskripsi singkat menarik tentang Gantolle Desa Sendang. Lalu gambar wisata paralayang yang terbaru. Bisa minta Pak Agung bisa bisa aja.</div>
               </v-col>
             </v-row>
           </v-parallax>

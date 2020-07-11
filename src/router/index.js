@@ -4,6 +4,10 @@ import Landing from '../views/Landing.vue'
 import Map from '../views/Map.vue'
 import AdminLogin from '../views/AdminLogin.vue'
 import MapDashboard from '../views/MapDashboard.vue'
+import SiteAdministration from '../views/SiteAdministration.vue'
+import WisataCatalogue from '../views/WisataCatalogue.vue'
+import AddWisata from '../views/AddWisata.vue'
+
 
 Vue.use(VueRouter)
 
@@ -22,15 +26,34 @@ const routes = [
     path: '/map/admin',
     name: 'AdminLogin',
     component: AdminLogin,
+    meta: {
+      admin: true,
+    }
   },
   {
     path: '/map/dashboard',
-    name: 'MapDashboard',
     component: MapDashboard,
     meta: {
       requiresAuth: true,
-    }
-  }
+    },
+    children: [
+      {
+        path: '/',
+        component: SiteAdministration,
+        name: 'SiteAdministration',
+      },
+      {
+        path: 'catalogue/wisata',
+        component: WisataCatalogue,
+        name: 'WisataCatalogue'
+      },
+      {
+        path: 'catalogue/wisata/add',
+        component: AddWisata,
+        name: 'AddWisata',
+      }
+    ]
+  },
 ]
 
 const router = new VueRouter({
@@ -43,11 +66,17 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (localStorage.getItem('token') == null) {
       next({
-        path: '/admin',
-        params: { nextUrl: to.fullPath },
+        path: '/map/admin',
+        query: { nextUrl: to.fullPath},
       })
     } else {
       next();
+    }
+  } else if (to.matched.some(record => record.meta.admin)) {
+    if (localStorage.getItem('token') == null) {
+      next(); 
+    } else {
+      next('map/dashboard');
     }
   } else {
     next();

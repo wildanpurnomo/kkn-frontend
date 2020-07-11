@@ -12,7 +12,7 @@
             required
             :rules="passwordRules"
           ></v-text-field>
-          <v-btn :disabled="!valid || loading" :loading="loading" @click="submit">Login</v-btn>
+          <v-btn :disabled="!valid || loading" :loading="loading" @click="submit" type="submit">Login</v-btn>
         </v-form>
         <br />
         <div class="h6 red--text" :hidden="error.length === 0">{{error}}</div>
@@ -22,8 +22,6 @@
 </template>
 
 <script>
-const axios = require("axios");
-
 export default {
   name: "AdminLoginForm",
   data() {
@@ -41,7 +39,7 @@ export default {
     submit: async function() {
       try {
         this.loading = true;
-        let response = await axios.post(
+        let response = await this.$http.post(
           "http://localhost:3000/api/admin/login",
           {
             username: this.username,
@@ -54,14 +52,15 @@ export default {
             localStorage.setItem("token", response.data.token);
             localStorage.setItem("userData", JSON.stringify(response.data));
 
-            this.$router.push({ name: "MapDashboard" });
+            if (this.$route.query.nextUrl != null) {
+              this.$router.push(this.$route.query.nextUrl);
+            } else {
+              this.$router.push('dashboard');
+            }
             this.error = "";
-          } else {
-            console.log("No token returned");
           }
         }
       } catch (error) {
-        console.log(error.response);
         this.error = error.response.data.error;
       }
       this.loading = false;
@@ -69,4 +68,3 @@ export default {
   }
 };
 </script>
-<style scoped></style>;

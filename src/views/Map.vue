@@ -33,7 +33,7 @@ export default {
           name: "Puncak Joglo",
           description:
             "Puncak Joglo merupakan wisata yang luar biasa indah megah asri luar biasa indah megah asri yang terletak di Desa Sendang, Kecamatan Wonogiri.",
-          imageUrl: "https://cdn.vuetifyjs.com/images/parallax/material.jpg",
+          imageUrl: "https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg",
           location: {
             coordinates: [-7.9, 110.8801834]
           }
@@ -42,7 +42,7 @@ export default {
           name: "Waduk Gajah Mungkur",
           description:
             "Waduk Gajah Mungkur merupakan wisata yang luar biasa indah megah asri luar biasa indah megah asri yang terletak di Desa Sendang, Kecamatan Wonogiri.",
-          imageUrl: "https://cdn.vuetifyjs.com/images/parallax/material.jpg",
+          imageUrl: "https://cdn.vuetifyjs.com/images/parallax/material2.jpg",
           location: {
             coordinates: [-7.9, 110.895]
           }

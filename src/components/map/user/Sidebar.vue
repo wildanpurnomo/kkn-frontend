@@ -25,7 +25,7 @@
         <br />
 
         <v-list-item>
-          <v-img src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"></v-img>
+          <v-img :src="locationData[indexChosen].imageUrl"></v-img>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
