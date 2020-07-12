@@ -6,14 +6,19 @@
           <div class="text-h5 white--text">Peta Digital Desa Sendang</div>
         </v-list-item>
 
-        <v-list-item>
-          <div class="text-caption">Klik pada penanda untuk melihat informasi lokasi.</div>
+        <v-list-item two-line>
+          <v-list-item-content>
+            <div class="text-caption">Klik pada penanda untuk melihat informasi lokasi.</div>
+            <router-link :to="{name: 'Landing'}">
+              <div class="text-caption">Kembali ke halaman Landing.</div>
+            </router-link>
+          </v-list-item-content>
         </v-list-item>
 
         <v-list-item>
           <div class="text-h5 font-weight-light">{{getLocationData[indexChosen].name}}</div>
         </v-list-item>
-
+        
         <v-divider></v-divider>
 
         <v-list-item>
@@ -26,7 +31,9 @@
         <br />
 
         <v-list-item style="margin-bottom: 16px;">
-          <v-img :src="`http://localhost:3000/api/venue/img/${getLocationData[indexChosen].imageURL}`"></v-img>
+          <v-img
+            :src="`http://localhost:3000/api/venue/img/${getLocationData[indexChosen].imageURL}`"
+          ></v-img>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>

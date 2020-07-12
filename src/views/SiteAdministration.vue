@@ -1,6 +1,15 @@
 <template>
   <v-container>
-    <div class="text-h5">Administrasi Laman</div>
+    <v-layout row wrap pa-3>
+      <v-flex md8 xs8>
+        <div class="text-h5">Administrasi Laman</div>
+      </v-flex>
+      <v-flex md4 xs4 style="text-align: end">
+        <router-link :to="{name: 'Map'}">
+          <v-btn>Kembali ke halaman peta.</v-btn>
+        </router-link>
+      </v-flex>
+    </v-layout>
     <v-container>
       <v-card flat v-for="(collection,index) in database" :key="index">
         <v-layout row wrap>
@@ -14,16 +23,10 @@
               <span class="text-h6">{{data.name}}</span>
             </router-link>
           </v-flex>
-          <v-flex md2 xs2 style="text-align: end">
+          <v-flex md4 xs4 style="text-align: end">
             <v-btn text :to="data.toAdd">
               <v-icon>mdi-plus</v-icon>&nbsp;
               <span>Tambah</span>
-            </v-btn>
-          </v-flex>
-          <v-flex md2 xs2 style="text-align: end">
-            <v-btn text :to="data.toEdit">
-              <v-icon>mdi-pencil</v-icon>&nbsp;
-              <span>Edit</span>
             </v-btn>
           </v-flex>
         </v-layout>
@@ -47,7 +50,6 @@ export default {
               name: "Admin",
               toList: "/access/admin",
               toAdd: "/access/admin/add",
-              toEdit: "/access/admin/edit"
             }
           ]
         },
@@ -58,13 +60,6 @@ export default {
               name: "Lokasi Wisata",
               toList: { name: "WisataCatalogue" },
               toAdd: { name: "AddWisata" },
-              toEdit: "/catalog/wisata/edit"
-            },
-            {
-              name: "Lokasi Kuliner",
-              toList: "/catalog/culinary",
-              toAdd: "/catalog/culinary/add",
-              toEdit: "/catalog/culinary/edit"
             }
           ]
         }

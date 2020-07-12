@@ -46,9 +46,10 @@
             </gmap-autocomplete>
           </div>
         </div>
-        <gmap-marker :position="markerPosition" :draggable="true" @dragend="onMarkerDragEnd"></gmap-marker>
+        <gmap-marker :position="markerInitPosition" :draggable="true" @dragend="onMarkerDragEnd"></gmap-marker>
       </gmap-map>
       <br />
+      <v-img ref="img" :src="imagePreviewURL" style="max-width: 500px; max-height: 500px"></v-img>
       <v-file-input
         label="Gambar lokasi"
         prepend-icon="mdi-camera"
@@ -56,8 +57,18 @@
         counter
         accept="image/png, image/jpeg, image/bmp"
         placeholder="Pilih gambar"
-        required
+        v-if="!isEdit"
         :rules="fileUploadRules"
+        @change="getFile"
+      ></v-file-input>
+      <v-file-input
+        label="Gambar lokasi"
+        prepend-icon="mdi-camera"
+        show-size
+        counter
+        accept="image/png, image/jpeg, image/bmp"
+        placeholder="Pilih gambar"
+        v-if="isEdit"
         @change="getFile"
       ></v-file-input>
       <v-btn :disabled="!valid || loading" :loading="loading" type="submit" @click="submit">Submit</v-btn>
@@ -65,8 +76,8 @@
 
     <v-dialog v-model="dialog" max-width="500" persistent>
       <v-card>
-        <v-card-title class="headline">Berhasil Menambahkan Lokasi!</v-card-title>
-        <v-card-text>Anda dapat tetap berada di halaman ini untuk menambahkan data baru.</v-card-text>
+        <v-card-title class="headline">{{getDialogHeadline}}</v-card-title>
+        <v-card-text>Anda dapat tetap berada di halaman ini atau kembali ke dashboard.</v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" text @click="onLeaveAfterSubmit">Kembali ke dashboard</v-btn>
@@ -88,6 +99,15 @@ export default {
       this.locationData.name = updated.name;
       this.locationData.description = updated.description;
       this.locationData.location = updated.location;
+
+      let latLng = {
+        lat: updated.location.coordinates[1],
+        lng: updated.location.coordinates[0]
+      };
+
+      this.markerInitPosition = latLng;
+      this.center = latLng;
+      this.imagePreviewURL = `http://localhost:3000/api/venue/img/${updated.imageURL}`;
     }
   },
   props: {
@@ -125,13 +145,14 @@ export default {
         },
         img: {}
       },
+      imagePreviewURL: "",
       textFieldRules: [v => !!v || "Mohon isikan nama lokasi."],
       fileUploadRules: [v => !!v || "Mohon pilih gambar lokasi."],
       center: {
         lat: -7.7999592,
         lng: 110.8801834
       },
-      markerPosition: {
+      markerInitPosition: {
         lat: -7.7999592,
         lng: 110.8801834
       }
@@ -148,10 +169,11 @@ export default {
         formData.set("description", this.locationData.description.trim());
         formData.set("adminId", this.userData.userId);
         formData.set("location", JSON.stringify(this.locationData.location));
-        formData.set("img", this.locationData.img);
 
+        let response;
         if (!this.isEdit) {
-          let response = await this.$http.post(
+          formData.set("img", this.locationData.img);
+          response = await this.$http.post(
             "http://localhost:3000/api/venue",
             formData,
             {
@@ -160,11 +182,22 @@ export default {
               }
             }
           );
-          if (response.status === 200) {
-            this.dialog = true;
-          }
         } else {
-          console.log("Duarr editor");
+          if (this.locationData.img) {
+            formData.set("img", this.locationData.img);
+          }
+          response = await this.$http.put(
+            `http://localhost:3000/api/venue/${this.$route.params.wisataId}`,
+            formData,
+            {
+              headers: {
+                "Content-Type": `multipart/form-data;`
+              }
+            }
+          );
+        }
+        if (response.status === 200) {
+          this.dialog = true;
         }
       } catch (error) {
         console.log(error);
@@ -175,6 +208,17 @@ export default {
       this.locationData.location.coordinates = [e.latLng.lng(), e.latLng.lat()];
     },
     getFile: function(e) {
+      let fReader = new FileReader();
+      fReader.onload = () => {
+        this.imagePreviewURL = fReader.result;
+      };
+
+      if (e) {
+        fReader.readAsDataURL(e);
+      } else {
+        this.imagePreviewURL = "";
+      }
+
       this.locationData.img = e;
     },
     onPlaceChanged: function(e) {
@@ -199,12 +243,23 @@ export default {
       this.locationData.location.coordinates = [e.latLng.lng(), e.latLng.lat()];
     },
     onStayAfterSubmit: function() {
-      this.$refs.addWisataForm.reset();
+      if (!this.isEdit) {
+        this.$refs.addWisataForm.reset();
+      }
       this.dialog = false;
     },
     onLeaveAfterSubmit: function() {
       this.dialog = false;
       this.$router.push({ name: "WisataCatalogue" });
+    }
+  },
+  computed: {
+    getDialogHeadline: function() {
+      if (this.isEdit) {
+        return "Berhasil menyunting data lokasi!";
+      } else {
+        return "Berhasil menambahkan data lokasi!";
+      }
     }
   }
 };

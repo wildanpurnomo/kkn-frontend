@@ -19,7 +19,6 @@ export default {
     this.$http.get('http://localhost:3000/api/venue')
       .then(res => {
         this.data = res.data;
-        console.log(res.data[0].description);
       })
       .catch(err => {
         console.log(err.response);
