@@ -2,10 +2,15 @@
   <div>
     <v-container fluid pa-0 style="height: 100vh">
       <v-layout style="height: 100%">
-        <gmap-map :center="center" :zoom="12" style="width: 100%; height: 100%">
+        <gmap-map
+          :center="center"
+          :zoom="12"
+          :options="{mapTypeControl: false}"
+          style="width: 100%; height: 100%"
+        >
           <gmap-marker
             :key="index"
-            v-for="(loc, index) in locationData"
+            v-for="(loc, index) in getLocationData"
             :position="getLocationCoordinates(loc.location.coordinates)"
             :icon="index === indexChosen ? 'http://maps.google.com/mapfiles/ms/icons/green-dot.png' : 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'"
             @click="changeIndexChosen(index)"
@@ -14,14 +19,17 @@
       </v-layout>
     </v-container>
 
-    <v-dialog v-model="dialog" width="500">
+    <v-dialog v-model="dialog" width="500" scrollable>
       <v-card>
-        <v-img :src="locationData[indexChosen].imageUrl" class="align-end">
-          <v-card-title>{{locationData[indexChosen].name}}</v-card-title>
+        <v-img
+          :src="`http://localhost:3000/api/venue/img/${getLocationData[indexChosen].imageURL}`"
+          class="align-end"
+        >
+          <v-card-title class="white--text font-weight-light">{{getLocationData[indexChosen].name}}</v-card-title>
         </v-img>
 
-        <v-card-text class="text-justify black--text" style="padding: 10px">
-          <div>{{locationData[indexChosen].description}}</div>
+        <v-card-text class="text-justify black--text" style="padding: 10px; height: 250px">
+          <div style="white-space: pre-wrap">{{getLocationData[indexChosen].description}}</div>
         </v-card-text>
       </v-card>
     </v-dialog>
@@ -50,11 +58,16 @@ export default {
       dialog: false
     };
   },
+  computed: {
+    getLocationData() {
+      return this.locationData;
+    }
+  },
   methods: {
     getLocationCoordinates(coords) {
       return {
-        lat: coords[0],
-        lng: coords[1]
+        lat: coords[1],
+        lng: coords[0]
       };
     },
     changeIndexChosen(index) {

@@ -15,39 +15,20 @@ export default {
     Sidebar,
     MapView,
   },
-  mounted() {},
+  created() {
+    this.$http.get('http://localhost:3000/api/venue')
+      .then(res => {
+        this.data = res.data;
+        console.log(res.data[0].description);
+      })
+      .catch(err => {
+        console.log(err.response);
+      })
+  },
   data() {
     return {
       indexChosen: 0,
-      data: [
-        {
-          name: "Watu Cenik",
-          description:
-            "Watu cenik merupakan wisata yang luar biasa indah megah asri luar biasa indah megah asri yang terletak di Desa Sendang, Kecamatan Wonogiri.",
-          imageUrl: "https://cdn.vuetifyjs.com/images/parallax/material.jpg",
-          location: {
-            coordinates: [-7.7999592, 110.8801834]
-          }
-        },
-        {
-          name: "Puncak Joglo",
-          description:
-            "Puncak Joglo merupakan wisata yang luar biasa indah megah asri luar biasa indah megah asri yang terletak di Desa Sendang, Kecamatan Wonogiri.",
-          imageUrl: "https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg",
-          location: {
-            coordinates: [-7.9, 110.8801834]
-          }
-        },
-        {
-          name: "Waduk Gajah Mungkur",
-          description:
-            "Waduk Gajah Mungkur merupakan wisata yang luar biasa indah megah asri luar biasa indah megah asri yang terletak di Desa Sendang, Kecamatan Wonogiri.",
-          imageUrl: "https://cdn.vuetifyjs.com/images/parallax/material2.jpg",
-          location: {
-            coordinates: [-7.9, 110.895]
-          }
-        }
-      ]
+      data: []
     };
   },
   methods: {

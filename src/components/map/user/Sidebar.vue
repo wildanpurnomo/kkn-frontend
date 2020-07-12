@@ -11,21 +11,22 @@
         </v-list-item>
 
         <v-list-item>
-          <div class="text-h5 font-weight-black">{{locationData[indexChosen].name}}</div>
+          <div class="text-h5 font-weight-light">{{getLocationData[indexChosen].name}}</div>
         </v-list-item>
 
         <v-divider></v-divider>
 
         <v-list-item>
           <article
-            class="text-justify text-h6 font-weight-regular"
-          >{{locationData[indexChosen].description}}</article>
+            class="text-justify text-body-1 font-weight-regular"
+            style="white-space: pre-wrap"
+          >{{getLocationData[indexChosen].description}}</article>
         </v-list-item>
 
         <br />
 
-        <v-list-item>
-          <v-img :src="locationData[indexChosen].imageUrl"></v-img>
+        <v-list-item style="margin-bottom: 16px;">
+          <v-img :src="`http://localhost:3000/api/venue/img/${getLocationData[indexChosen].imageURL}`"></v-img>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -45,6 +46,11 @@ export default {
       required: true
     }
   },
+  computed: {
+    getLocationData() {
+      return this.locationData;
+    }
+  }
 };
 </script>
 
