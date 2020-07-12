@@ -79,9 +79,36 @@
 
 <script>
 export default {
-  name: "AddWisataForm",
+  name: "WisataForm",
   created() {
     this.userData = JSON.parse(localStorage.getItem("userData"));
+  },
+  watch: {
+    editedData: function(updated) {
+      this.locationData.name = updated.name;
+      this.locationData.description = updated.description;
+      this.locationData.location = updated.location;
+    }
+  },
+  props: {
+    isEdit: {
+      type: Boolean,
+      default: false
+    },
+    editedData: {
+      type: Object,
+      default: function() {
+        return {
+          name: "",
+          description: "",
+          location: {
+            type: "Point",
+            coordinates: [110.8801834, -7.7999592]
+          },
+          img: {}
+        };
+      }
+    }
   },
   data() {
     return {
@@ -115,23 +142,29 @@ export default {
       try {
         e.preventDefault();
         this.loading = true;
+
         let formData = new FormData();
         formData.set("name", this.locationData.name.trim());
         formData.set("description", this.locationData.description.trim());
         formData.set("adminId", this.userData.userId);
         formData.set("location", JSON.stringify(this.locationData.location));
         formData.set("img", this.locationData.img);
-        let response = await this.$http.post(
-          "http://localhost:3000/api/venue",
-          formData,
-          {
-            headers: {
-              "Content-Type": `multipart/form-data;`
+
+        if (!this.isEdit) {
+          let response = await this.$http.post(
+            "http://localhost:3000/api/venue",
+            formData,
+            {
+              headers: {
+                "Content-Type": `multipart/form-data;`
+              }
             }
+          );
+          if (response.status === 200) {
+            this.dialog = true;
           }
-        );
-        if (response.status === 200) {
-          this.dialog = true;
+        } else {
+          console.log("Duarr editor");
         }
       } catch (error) {
         console.log(error);

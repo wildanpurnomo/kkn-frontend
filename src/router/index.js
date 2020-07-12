@@ -7,6 +7,7 @@ import MapDashboard from '../views/MapDashboard.vue'
 import SiteAdministration from '../views/SiteAdministration.vue'
 import WisataCatalogue from '../views/WisataCatalogue.vue'
 import AddWisata from '../views/AddWisata.vue'
+import EditWisata from '../views/EditWisata.vue'
 
 
 Vue.use(VueRouter)
@@ -51,6 +52,11 @@ const routes = [
         path: 'catalogue/wisata/add',
         component: AddWisata,
         name: 'AddWisata',
+      },
+      {
+        path: 'catalogue/wisata/edit/:wisataId',
+        component: EditWisata,
+        name: 'EditWisata',
       }
     ]
   },

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Form from '@/components/map/adminDashboard/AddWisataForm.vue';
+import Form from '@/components/map/adminDashboard/WisataForm.vue';
 
 export default {
   name: "AddWisata",
