@@ -33,6 +33,17 @@
         </v-card-text>
       </v-card>
     </v-dialog>
+
+    <v-dialog v-model="isFirstTimeInPage" max-width="500" persistent>
+      <v-card>
+        <v-card-title class="headline">Selamat datang</v-card-title>
+
+        <v-card-text>Klik pada penanda biru untuk melihat informasi lokasi.</v-card-text>
+        <v-card-actions>
+          <v-btn color="blue darken-1" text @click="changeIsFirstTimeInPage">Ok</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -55,8 +66,15 @@ export default {
         lat: -7.7999592,
         lng: 110.8801834
       },
-      dialog: false
+      dialog: false,
+      initDialog: true,
+      isFirstTimeInPage: true,
     };
+  },
+  mounted() {
+    if (localStorage.isFirstTimeInPage !== null) {
+      this.isFirstTimeInPage = !localStorage.isFirstTimeInPage;
+    }
   },
   computed: {
     getLocationData() {
@@ -79,6 +97,10 @@ export default {
       ) {
         this.dialog = true;
       }
+    },
+    changeIsFirstTimeInPage() {
+      this.isFirstTimeInPage = false;
+      localStorage.isFirstTimeInPage = false;
     }
   }
 };
