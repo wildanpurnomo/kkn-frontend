@@ -1,5 +1,14 @@
 <template>
   <v-container>
+    <v-layout row wrap>
+      <v-flex md12 xs12>
+        <v-breadcrumbs :items="breadcrumbsItems">
+          <template v-slot:divider>
+            <v-icon>mdi-chevron-right</v-icon>
+          </template>
+        </v-breadcrumbs>
+      </v-flex>
+    </v-layout>
     <div class="text-h5">Katalog Wisata</div>
     <v-container>
       <v-card flat>
@@ -65,10 +74,19 @@ export default {
       wisataToBeDeleted: "",
       breadcrumbsItems: [
         {
-          text: "Dasbor",
+          text: "Dashboard",
           disabled: false,
-          link: true,
-          to: { name: "SiteAdministration" }
+          href: "/map/dashboard"
+        },
+        {
+          text: "Katalog",
+          disabled: false,
+          href: "/map/dashboard"
+        },
+        {
+          text: "Wisata",
+          disabled: false,
+          href: "/map/dashboard/catalogue/wisata"
         }
       ]
     };

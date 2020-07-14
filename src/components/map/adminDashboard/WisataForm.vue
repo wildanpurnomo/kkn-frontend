@@ -155,7 +155,8 @@ export default {
       markerInitPosition: {
         lat: -7.7999592,
         lng: 110.8801834
-      }
+      },
+ 
     };
   },
   methods: {
