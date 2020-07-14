@@ -9,7 +9,6 @@
         </v-breadcrumbs>
       </v-flex>
     </v-layout>
-    <div class="text-h5">Katalog Wisata</div>
     <v-container>
       <v-card flat>
         <v-layout row wrap pa-3 class="blue darken-1">

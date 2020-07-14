@@ -57,8 +57,8 @@ export default {
           collectionList: [
             {
               name: "Admin",
-              toList: "/access/admin",
-              toAdd: "/access/admin/add"
+              toList: { name: "AdminList" },
+              toAdd: { name: "AddAdmin" }
             }
           ]
         },

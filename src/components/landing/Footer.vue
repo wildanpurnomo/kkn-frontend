@@ -22,7 +22,7 @@ export default {
     socials: [
       { icon: "mdi-facebook", url: "https://www.facebook.com/pg/sendang0001/"},
       { icon: "mdi-twitter", url: "https://twitter.com/SendangDesa"},
-      { icon: "mdi-instagram", url: "https://twitter.com/SendangDesa"},
+      { icon: "mdi-instagram", url: "https://www.instagram.com/desasendangwonogiri/"},
       { icon: "mdi-youtube", url: "https://www.youtube.com/watch?v=iWIEFXStYH4"},
     ],
   })
