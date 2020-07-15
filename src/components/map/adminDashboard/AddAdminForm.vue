@@ -87,7 +87,7 @@ export default {
     },
     onLeaveAfterSubmit: function() {
       this.dialog = false;
-      this.$router.push({ name: "adminList" });
+      this.$router.push({ name: "AdminList" });
     }
   }
 };

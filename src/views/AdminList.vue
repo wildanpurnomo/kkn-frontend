@@ -40,7 +40,7 @@
             </v-btn>
           </v-flex>
           <v-flex md2 xs2 style="text-align: end" v-if="!isCurrentUser(data._id)">
-            <v-btn text>
+            <v-btn text @click="showDeleteConfirmationDialog(data)">
               <v-icon>mdi-delete</v-icon>&nbsp;
               <span>Hapus</span>
             </v-btn>
@@ -48,14 +48,25 @@
         </v-layout>
       </v-card>
     </v-container>
-    <v-dialog max-width="500" persistent>
+    <v-dialog v-model="deleteDialog" max-width="500" persistent>
       <v-card>
         <v-card-title class="headline">Konfirmasi penghapusan</v-card-title>
-        <v-card-text></v-card-text>
+        <v-card-text>Anda akan menghapus salah satu akun admin. Mohon tuliskan ulang username untuk konfirmasi.</v-card-text>
+        <v-card-text class="text-center text-h5 font-weight-bold">{{usernameToBeDeleted}}</v-card-text>
+        <v-card-text>
+          <v-form ref="deleteConfirmationForm" v-model="deleteDialogValid">
+            <v-text-field label="Masukkan username" :rules="deleteDialogTextFieldRules" required></v-text-field>
+          </v-form>
+        </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" text>Batal</v-btn>
-          <v-btn color="blue darken-1" text>Ya</v-btn>
+          <v-btn color="blue darken-1" text @click="deleteDialog = false">Batal</v-btn>
+          <v-btn
+            color="blue darken-1"
+            text
+            @click="proceedDeleteAdmin"
+            :disabled="!deleteDialogValid"
+          >Ya</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -67,6 +78,10 @@ export default {
   name: "AdminList",
   data() {
     return {
+      deleteDialogValid: false,
+      deleteDialog: false,
+      idToBeDeleted: "",
+      usernameToBeDeleted: "",
       adminCollection: [],
       breadcrumbsItems: [
         {
@@ -84,6 +99,11 @@ export default {
           disabled: false,
           href: "/map/dashboard/access/admin"
         }
+      ],
+      deleteDialogTextFieldRules: [
+        v =>
+          (!!v && v) === this.usernameToBeDeleted ||
+          "Masukkan password yang sama."
       ]
     };
   },
@@ -100,6 +120,32 @@ export default {
   methods: {
     isCurrentUser(dataId) {
       return dataId === JSON.parse(localStorage.userData).userId;
+    },
+    showDeleteConfirmationDialog(adminData) {
+      this.idToBeDeleted = adminData._id;
+      this.usernameToBeDeleted = adminData.username;
+      this.deleteDialog = true;
+    },
+    async proceedDeleteAdmin() {
+      try {
+        let response = await this.$http.delete(
+          `http://localhost:3000/api/admin/delete/${this.idToBeDeleted}`
+        );
+        if (response) {
+          this.$http
+            .get("http://localhost:3000/api/admin")
+            .then(res => {
+              this.adminCollection = res.data;
+            })
+            .catch(err => {
+              console.log(err.response);
+            });
+          this.deleteDialog = false;
+        }
+      } catch (error) {
+        console.log(error.response);
+        this.deleteDialog = false;
+      }
     }
   }
 };
