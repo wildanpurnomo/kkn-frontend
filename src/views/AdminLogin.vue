@@ -1,7 +1,5 @@
 <template >
-  <div>
-    <LoginForm />
-  </div>
+  <LoginForm />
 </template>
 
 <script>
@@ -11,6 +9,6 @@ export default {
   name: "AdminLogin",
   components: {
     LoginForm
-  },
+  }
 };
 </script>

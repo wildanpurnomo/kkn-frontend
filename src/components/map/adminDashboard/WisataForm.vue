@@ -227,7 +227,7 @@ export default {
         lat: e.geometry.location.lat(),
         lng: e.geometry.location.lng()
       };
-      this.markerPosition = {
+      this.markerInitPosition = {
         lat: e.geometry.location.lat(),
         lng: e.geometry.location.lng()
       };

@@ -1,7 +1,7 @@
 <template >
   <div>
     <Toolbar :userData="userData"/>
-    <router-view ></router-view>
+    <router-view @updateAccount="updateAccount"></router-view>
   </div>
 </template>
 
@@ -22,5 +22,10 @@ export default {
   created() {
     this.userData = JSON.parse(localStorage.getItem("userData"));
   },
+  methods: {
+    updateAccount(data) {
+      this.userData = data;
+    }
+  }
 };
 </script>

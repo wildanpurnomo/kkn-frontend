@@ -5,10 +5,9 @@
         <v-flex md6 pa-5>
           <div class="text-h3 text-md-h3 font-weight-light black--text">Kunjungi Peta Digital Kami</div>
           <br />
-          <div class="text-h5 text-md-h5 font-weight-light black--text text-justify">
-            Kunjungi peta digital kami untuk melihat secara visual lokasi-lokasi wisata Desa Sendang. Informasi lebih lengkap mengenai tiap lokasi juga tertera. Anda juga bisa mengunduh aplikasi mobile di
-            <a href>Google Play Store</a> dan <a href>App Store</a>.
-          </div>
+          <div
+            class="text-h5 text-md-h5 font-weight-light black--text text-justify"
+          >Kunjungi peta digital kami untuk melihat secara visual lokasi-lokasi wisata Desa Sendang. Informasi lebih lengkap mengenai tiap lokasi juga tertera.</div>
           <br />
           <v-btn class="primary" href="/map">Kunjungi Laman</v-btn>
         </v-flex>

@@ -15,7 +15,7 @@
       </v-flex>
       <v-flex md4 xs4 style="text-align: end">
         <router-link :to="{name: 'Map'}">
-          <v-btn>Kembali ke halaman peta.</v-btn>
+          <v-btn>Kembali ke halaman peta</v-btn>
         </router-link>
       </v-flex>
     </v-layout>
