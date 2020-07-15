@@ -29,7 +29,12 @@
             </v-btn>
           </v-flex>
         </v-layout>
-        <v-layout row wrap pa-3 v-for="(data, index) in adminCollection" :key="index">
+        <v-layout row wrap mt-5>
+          <v-flex>
+            <v-text-field v-model="searchQuery" outlined label="Cari..."></v-text-field>
+          </v-flex>
+        </v-layout>
+        <v-layout row wrap pa-3 v-for="(data, index) in filteredAdmin" :key="index">
           <v-flex md8 xs8>
             <span class="text-h6">{{data.username}}</span>
           </v-flex>
@@ -82,6 +87,7 @@ export default {
       deleteDialog: false,
       idToBeDeleted: "",
       usernameToBeDeleted: "",
+      searchQuery: "",
       adminCollection: [],
       breadcrumbsItems: [
         {
@@ -106,6 +112,13 @@ export default {
           "Masukkan password yang sama."
       ]
     };
+  },
+  computed: {
+    filteredAdmin() {
+      return this.adminCollection.filter(item => {
+        return item.username.toLowerCase().match(this.searchQuery);
+      })
+    }
   },
   created() {
     this.$http

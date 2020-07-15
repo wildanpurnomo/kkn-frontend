@@ -29,7 +29,12 @@
             </v-btn>
           </v-flex>
         </v-layout>
-        <v-layout row wrap pa-3 v-for="(data, index) in locationCollection" :key="index">
+        <v-layout row wrap mt-5>
+          <v-flex>
+            <v-text-field v-model="searchQuery" outlined label="Cari..."></v-text-field>
+          </v-flex>
+        </v-layout>
+        <v-layout row wrap pa-3 v-for="(data, index) in filteredLocations" :key="index">
           <v-flex md8 xs8>
             <span class="text-h6">{{data.name}}</span>
           </v-flex>
@@ -71,6 +76,7 @@ export default {
       deleteConfirmation: false,
       idToBeDeleted: "",
       wisataToBeDeleted: "",
+      searchQuery: "",
       breadcrumbsItems: [
         {
           text: "Dashboard",
@@ -92,6 +98,13 @@ export default {
   },
   created() {
     this.getVenues();
+  },
+  computed: {
+    filteredLocations() {
+      return this.locationCollection.filter(item => {
+        return item.name.toLowerCase().match(this.searchQuery);
+      })
+    }
   },
   methods: {
     getVenues: function() {
