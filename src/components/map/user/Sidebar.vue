@@ -2,7 +2,7 @@
   <nav>
     <v-navigation-drawer app class="white" width="450">
       <v-list style="padding: 0">
-        <v-list-item class="blue darken-1" style="height: 75px">
+        <v-list-item class="red darken-1" style="height: 75px">
           <div class="text-h5 white--text">Peta Digital Desa Sendang</div>
         </v-list-item>
 

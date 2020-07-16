@@ -1,28 +1,30 @@
 <template>
   <v-container>
-    <v-layout row wrap>
-      <v-flex md12 xs12>
-        <v-breadcrumbs :items="breadcrumbsItems">
-          <template v-slot:divider>
-            <v-icon>mdi-chevron-right</v-icon>
-          </template>
-        </v-breadcrumbs>
-      </v-flex>
-    </v-layout>
-    <v-layout row wrap pa-3>
-      <v-flex md8 xs8>
+    <v-row>
+      <v-col cols="12">
+        <v-row>
+          <v-breadcrumbs :items="breadcrumbsItems">
+            <template v-slot:divider>
+              <v-icon>mdi-chevron-right</v-icon>
+            </template>
+          </v-breadcrumbs>
+        </v-row>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col md="8" sm="12">
         <div class="text-h5">Administrasi Laman</div>
-      </v-flex>
-      <v-flex md4 xs4 style="text-align: end">
-        <router-link :to="{name: 'Map'}">
+      </v-col>
+      <v-col md="4" sm="12" class="text-md-right text-sm-left text-xs-left">
+        <router-link :to="{name: 'Map'}" >
           <v-btn>Kembali ke halaman peta</v-btn>
         </router-link>
-      </v-flex>
-    </v-layout>
+      </v-col>
+    </v-row>
     <v-container>
       <v-card flat v-for="(collection,index) in database" :key="index">
         <v-layout row wrap>
-          <v-flex md12 xs12 class="blue darken-1" pa-3>
+          <v-flex md12 xs12 class="red darken-1" pa-3>
             <div class="white--text text-h5">{{collection.collectionName}}</div>
           </v-flex>
         </v-layout>
@@ -35,7 +37,7 @@
           <v-flex md4 xs4 style="text-align: end">
             <v-btn text :to="data.toAdd">
               <v-icon>mdi-plus</v-icon>&nbsp;
-              <span>Tambah</span>
+              <span >Tambah</span>
             </v-btn>
           </v-flex>
         </v-layout>

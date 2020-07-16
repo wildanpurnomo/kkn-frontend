@@ -1,16 +1,20 @@
 <template >
   <nav>
-    <v-app-bar color="blue darken-1" dark>
+    <v-app-bar color="red darken-1" dark>
       <v-app-bar-nav-icon class="hidden-md-and-up" @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <router-link :to="{ name: 'SiteAdministration' }" class="white--text" style="text-decoration: none;">
-        <v-toolbar-title >Sendang Digital Map Admin</v-toolbar-title>
+      <router-link
+        :to="{ name: 'SiteAdministration' }"
+        class="white--text hidden-sm-and-down"
+        style="text-decoration: none;"
+      >
+        <v-toolbar-title>Sendang Digital Map Admin</v-toolbar-title>
       </router-link>
       <v-spacer></v-spacer>
       <span
         class="white--text text-h6 hidden-sm-and-down"
         style="margin-right: 10px"
       >Welcome, {{userData.username}}</span>
-      <v-btn @click="logout" depressed class="blue darken-1">
+      <v-btn @click="logout" text style="padding: 0px">
         <span>Logout</span>
         <v-icon>mdi-exit-to-app</v-icon>
       </v-btn>
@@ -31,14 +35,16 @@
       </v-list-item>
       <v-divider></v-divider>
       <v-list v-for="(item, index) in items" :key="index" nav>
-        <v-list-item link @click="drawer = !drawer">
-          <v-list-item-icon>
-            <v-icon>{{item.icon}}</v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>
-            <v-list-item-title>{{item.name}}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+        <router-link :to="{name: 'SiteAdministration'}" style="text-decoration: none; color: black">
+          <v-list-item link>
+            <v-list-item-icon>
+              <v-icon>{{item.icon}}</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title>{{item.name}}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </router-link>
       </v-list>
     </v-navigation-drawer>
   </nav>

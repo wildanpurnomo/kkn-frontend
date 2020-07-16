@@ -11,21 +11,20 @@
     </v-layout>
     <v-container>
       <v-card flat>
-        <v-layout row wrap pa-3 class="blue darken-1">
+        <v-layout row wrap pa-3 class="red darken-1">
           <v-flex md10 xs10>
             <div class="white--text text-h5">Daftar Wisata Ditambahkan</div>
           </v-flex>
           <v-flex md2 xs2 style="text-align: end">
             <v-btn
               text
-              class="blue darken-1"
               dark
               dense
               style="text-transform: capitalize"
               :to="{name: 'AddWisata'}"
             >
               <v-icon>mdi-plus-thick</v-icon>
-              <span class="white--text text-h6">Tambah</span>
+              <span class="white--text text-h6 hidden-sm-and-down">Tambah</span>
             </v-btn>
           </v-flex>
         </v-layout>
@@ -41,13 +40,13 @@
           <v-flex md2 xs2 style="text-align: end">
             <v-btn text :to="{ name: 'EditWisata', params: {wisataId: data._id}}">
               <v-icon>mdi-pencil</v-icon>&nbsp;
-              <span>Edit</span>
+              <span class="hidden-sm-and-down">Edit</span>
             </v-btn>
           </v-flex>
           <v-flex md2 xs2 style="text-align: end">
             <v-btn text @click="showDeleteDialogConfirmation(data.name, data._id)">
               <v-icon>mdi-delete</v-icon>&nbsp;
-              <span>Hapus</span>
+              <span class="hidden-sm-and-down">Hapus</span>
             </v-btn>
           </v-flex>
         </v-layout>
