@@ -53,7 +53,7 @@ export default {
   props: {
     locationData: {
       type: Array,
-      required: true
+      required: true,
     },
     indexChosen: {
       type: Number,
