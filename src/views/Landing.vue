@@ -3,10 +3,9 @@
     <Hero />
     <Featuring />
     <v-divider></v-divider>
-    <NewNormal />
+    <Facility />
     <v-divider></v-divider>
     <Paralayang />
-    <Gantolle />
     <v-divider></v-divider>
     <DigitalMap />
     <v-divider></v-divider>
@@ -18,9 +17,8 @@
 // @ is an alias to /src
 import Hero from "@/components/landing/Hero.vue";
 import Featuring from "@/components/landing/Featuring.vue";
-import NewNormal from "@/components/landing/NewNormalTeaser.vue";
+import Facility from "@/components/landing/Facility.vue";
 import Paralayang from "@/components/landing/Paralayang.vue";
-import Gantolle from "@/components/landing/Gantolle.vue";
 import DigitalMap from "@/components/landing/DigitalMapTeaser.vue";
 import Footer from "@/components/landing/Footer.vue";
 
@@ -29,9 +27,8 @@ export default {
   components: {
     Hero,
     Featuring,
-    NewNormal,
+    Facility,
     Paralayang,
-    Gantolle,
     DigitalMap,
     Footer
   }

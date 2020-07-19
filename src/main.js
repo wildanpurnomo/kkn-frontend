@@ -4,6 +4,7 @@ import './registerServiceWorker'
 import router from './router'
 import vuetify from './plugins/vuetify';
 import * as VueGoogleMaps from "vue2-google-maps";
+import VueObserveVisibility from 'vue-observe-visibility'
 import Axios from 'axios';
 
 Vue.config.productionTip = false
@@ -14,6 +15,7 @@ Vue.use(VueGoogleMaps, {
     libraries: "places",
   }
 });
+Vue.use(VueObserveVisibility);
 
 new Vue({
   router,
