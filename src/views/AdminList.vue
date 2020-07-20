@@ -115,7 +115,7 @@ export default {
   },
   created() {
     this.$http
-      .get("http://localhost:3000/api/admin")
+      .get(`${process.env.API_BASE_URL}admin`)
       .then(res => {
         this.adminCollection = res.data;
       })
@@ -135,11 +135,11 @@ export default {
     async proceedDeleteAdmin() {
       try {
         let response = await this.$http.delete(
-          `http://localhost:3000/api/admin/delete/${this.idToBeDeleted}`
+          `${process.env.API_BASE_URL}admin/delete/${this.idToBeDeleted}`
         );
         if (response) {
           this.$http
-            .get("http://localhost:3000/api/admin")
+            .get(`${process.env.API_BASE_URL}admin`)
             .then(res => {
               this.adminCollection = res.data;
             })

@@ -22,7 +22,7 @@
     <v-dialog v-model="dialog" width="500" scrollable>
       <v-card>
         <v-img
-          :src="`http://localhost:3000/api/venue/img/${getLocationData[indexChosen].imageURL}`"
+          :src="`${process.env.API_BASE_URL}venue/img/${getLocationData[indexChosen].imageURL}`"
           class="align-end"
         >
           <v-card-title class="white--text font-weight-light">{{getLocationData[indexChosen].name}}</v-card-title>

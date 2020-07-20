@@ -69,7 +69,7 @@ export default {
     logout: async function() {
       try {
         let response = await this.$http.put(
-          `http://localhost:3000/api/admin/logout/${this.userData.userId}`
+          `https://sendang-digital-map.et.r.appspot.com/api/admin/logout/${this.userData.userId}`
         );
 
         if (response.status === 200) {

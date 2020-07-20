@@ -108,7 +108,7 @@ export default {
   methods: {
     getVenues: function() {
       this.$http
-        .get("http://localhost:3000/api/venue")
+        .get("https://sendang-digital-map.et.r.appspot.com/api/venue")
         .then(response => {
           this.locationCollection = response.data;
         })
@@ -124,7 +124,7 @@ export default {
     onDeleteVenue: async function() {
       try {
         let response = await this.$http.delete(
-          `http://localhost:3000/api/venue/${this.idToBeDeleted}`
+          `https://sendang-digital-map.et.r.appspot.com/venue/${this.idToBeDeleted}`
         );
         if (response.status === 200) {
           this.getVenues();

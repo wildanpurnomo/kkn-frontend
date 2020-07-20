@@ -49,7 +49,7 @@ export default {
       try {
         this.loading = true;
         let response = await this.$http.post(
-          "http://localhost:3000/api/admin/login",
+          `${process.env.API_BASE_URL}admin/login`,
           {
             username: this.username,
             password: this.password

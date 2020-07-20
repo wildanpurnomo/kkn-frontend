@@ -69,7 +69,7 @@ export default {
         e.preventDefault();
         this.loading = true;
 
-        let response = await this.$http.post("http://localhost:3000/api/admin", {
+        let response = await this.$http.post(`${process.env.API_BASE_URL}admin`, {
           username: this.username,
           password: this.password
         });

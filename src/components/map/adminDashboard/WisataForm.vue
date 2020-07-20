@@ -107,7 +107,7 @@ export default {
 
       this.markerInitPosition = latLng;
       this.center = latLng;
-      this.imagePreviewURL = `http://localhost:3000/api/venue/img/${updated.imageURL}`;
+      this.imagePreviewURL = `${process.env.API_BASE_URL}venue/img/${updated.imageURL}`;
     }
   },
   props: {
@@ -175,7 +175,7 @@ export default {
         if (!this.isEdit) {
           formData.set("img", this.locationData.img);
           response = await this.$http.post(
-            "http://localhost:3000/api/venue",
+            `${process.env.API_BASE_URL}venue`,
             formData,
             {
               headers: {
@@ -188,7 +188,7 @@ export default {
             formData.set("img", this.locationData.img);
           }
           response = await this.$http.put(
-            `http://localhost:3000/api/venue/${this.$route.params.wisataId}`,
+            `${process.env.API_BASE_URL}venue/${this.$route.params.wisataId}`,
             formData,
             {
               headers: {

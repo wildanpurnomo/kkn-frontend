@@ -52,7 +52,6 @@ export default {
   name: "SiteAdministration",
   data() {
     return {
-      adminList: [],
       database: [
         {
           collectionName: "Akses",
@@ -67,7 +66,7 @@ export default {
         {
           collectionName: "Katalog",
           collectionList: [
-            {
+            { 
               name: "Lokasi Wisata",
               toList: { name: "WisataCatalogue" },
               toAdd: { name: "AddWisata" }
@@ -84,16 +83,6 @@ export default {
       ]
     };
   },
-  created() {
-    this.$http
-      .get("http://localhost:3000/api/admin")
-      .then(response => {
-        this.adminList = response.data;
-      })
-      .catch(err => {
-        console.log(err.response);
-      });
-  }
 };
 </script>
 <style scoped>

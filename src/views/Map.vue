@@ -21,7 +21,7 @@ export default {
   },
   created() {
     this.$http
-      .get("http://localhost:3000/api/venue")
+      .get(`${process.env.API_BASE_URL}venue`)
       .then(res => {
         if (res.data.length > 0) {
           this.data = res.data;

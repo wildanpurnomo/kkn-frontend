@@ -31,7 +31,7 @@
         <br />
 
         <v-list-item style="margin-bottom: 16px;">
-          <v-img :src="`http://localhost:3000/api/venue/img/${locationData[indexChosen].imageURL}`"></v-img>
+          <v-img :src="`${process.env.API_BASE_URL}venue/img/${locationData[indexChosen].imageURL}`"></v-img>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>

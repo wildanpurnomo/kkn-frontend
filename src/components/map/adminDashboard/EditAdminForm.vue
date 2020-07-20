@@ -98,7 +98,7 @@ export default {
 
         if (this.$refs.editAdminForm.validate()) {
           let response = await this.$http.put(
-            `http://localhost:3000/api/admin/${this.$route.params.adminId}`,
+            `${process.env.API_BASE_URL}admin/${this.$route.params.adminId}`,
             {
               username: this.username,
               oldPassword: this.oldPassword,
