@@ -1,8 +1,8 @@
 # sendangdigimap-frontend
 
-landing: s.id/WisataSendang
+landing: https://fe-dot-sendang-digital-map.et.r.appspot.com/
 
-map: s.id/PetaDigitalSendang
+map: https://fe-dot-sendang-digital-map.et.r.appspot.com/map
 
 adminPage for map : I think I'll make yt video about that later
 
