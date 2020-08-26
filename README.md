@@ -1,24 +1,7 @@
 # sendangdigimap-frontend
 
-## Project setup
-```
-npm install
-```
+landing: s.id/WisataSendang
+map: s.id/PetaDigitalSendang
+adminPage for map : I think I'll make yt video about that later
+backend code: https://github.com/wildanpurnomo/sendang-digimap-backend
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
